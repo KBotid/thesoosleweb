@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Soosle Search 3.0 AI Ultimate</title>
+
+<!-- GOOGLE SEARCH -->
+<script async src="https://cse.google.com/cse.js?cx=468c64b2a42334393"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#020617;
+color:white;
+overflow-x:hidden;
+min-height:100vh;
+transition:.3s;
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,#2563eb 0%,transparent 35%),
+radial-gradient(circle at bottom right,#7c3aed 0%,transparent 35%),
+#020617;
+z-index:-2;
+}
+
+.glow{
+position:fixed;
+width:500px;
+height:500px;
+background:#2563eb;
+filter:blur(180px);
+opacity:.15;
+top:-120px;
+left:-120px;
+z-index:-1;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 28px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+background:linear-gradient(90deg,#60a5fa,#a78bfa);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav{
+display:flex;
+gap:12px;
+}
+
+.nav button{
+padding:12px 18px;
+border:none;
+border-radius:14px;
+background:rgba(255,255,255,0.08);
+color:white;
+cursor:pointer;
+font-size:15px;
+transition:.25s;
+}
+
+.nav button:hover{
+background:rgba(255,255,255,0.15);
+transform:translateY(-2px);
+}
+
+/* HERO */
+
+.main{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:90px 20px 50px;
+}
+
+.main h1{
+font-size:92px;
+font-weight:800;
+margin-bottom:12px;
+background:linear-gradient(90deg,#ffffff,#a5b4fc);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.main p{
+font-size:22px;
+line-height:1.6;
+max-width:760px;
+color:#cbd5e1;
+margin-bottom:45px;
+}
+
+/* SEARCH */
+
+.search-ui{
+width:100%;
+max-width:980px;
+padding:35px;
+border-radius:30px;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(24px);
+box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* QUICK LINKS */
+
+.quick-links{
+display:flex;
+gap:16px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:50px;
+}
+
+.quick-links a{
+padding:14px 22px;
+background:rgba(255,255,255,0.07);
+border-radius:16px;
+text-decoration:none;
+color:white;
+transition:.25s;
+}
+
+.quick-links a:hover{
+background:rgba(255,255,255,0.14);
+transform:translateY(-2px);
+}
+
+/* FEATURES */
+
+.features{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:24px;
+width:100%;
+max-width:1150px;
+}
+
+.card{
+padding:30px;
+border-radius:26px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+text-align:left;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+background:rgba(255,255,255,0.08);
+}
+
+.card h2{
+margin-bottom:14px;
+font-size:24px;
+}
+
+.card p{
+color:#cbd5e1;
+line-height:1.7;
+}
+
+/* SETTINGS */
+
+.settings{
+position:fixed;
+top:0;
+right:-340px;
+width:320px;
+height:100%;
+background:#0f172a;
+border-left:1px solid rgba(255,255,255,0.08);
+padding:25px;
+transition:.35s;
+z-index:999;
+overflow-y:auto;
+}
+
+.settings.active{
+right:0;
+}
+
+.settings h2{
+margin-bottom:25px;
+font-size:28px;
+}
+
+.setting-group{
+margin-bottom:22px;
+}
+
+.setting-group label{
+display:block;
+margin-bottom:10px;
+color:#cbd5e1;
+}
+
+.setting-group button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+background:#1e293b;
+color:white;
+cursor:pointer;
+transition:.2s;
+}
+
+.setting-group button:hover{
+background:#334155;
+}
+
+.status{
+padding:12px;
+border-radius:12px;
+background:rgba(34,197,94,0.15);
+border:1px solid rgba(34,197,94,0.3);
+color:#86efac;
+font-size:14px;
+}
+
+/* FOOTER */
+
+.footer{
+padding:45px 20px;
+text-align:center;
+color:#64748b;
+font-size:14px;
+}
+
+/* LIGHT MODE */
+
+body.light{
+background:#f8fafc;
+color:#0f172a;
+}
+
+body.light .header{
+background:rgba(255,255,255,0.8);
+}
+
+body.light .search-ui,
+body.light .card,
+body.light .quick-links a{
+background:white;
+border:1px solid #dbeafe;
+color:#0f172a;
+}
+
+body.light .main p,
+body.light .card p{
+color:#334155;
+}
+
+body.light .settings{
+background:#ffffff;
+}
+
+body.light .nav button{
+background:#dbeafe;
+color:#0f172a;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.main h1{
+font-size:58px;
+}
+
+.main p{
+font-size:18px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.header{
+padding:15px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="glow"></div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+Soosle 3.0 AI
+</div>
+
+<div class="nav">
+<button onclick="toggleSettings()">⚙ Settings</button>
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+<h1>SOOSLE</h1>
+
+<p>
+The futuristic AI-powered search engine experience built for mobile apps,
+web apps, and Flipabit projects.
+</p>
+
+<!-- SEARCH -->
+
+<div class="search-ui">
+<div class="gcse-search"></div>
+</div>
+
+<!-- QUICK LINKS -->
+
+<div class="quick-links">
+<a href="https://youtube.com">YouTube</a>
+<a href="https://github.com">GitHub</a>
+<a href="https://gmail.com">Gmail</a>
+<a href="https://wikipedia.org">Wikipedia</a>
+<a href="https://openai.com">OpenAI</a>
+</div>
+
+<!-- FEATURES -->
+
+<div class="features">
+
+<div class="card">
+<h2>🤖 AI Assistant</h2>
+<p>
+Integrated AI chatbot powered by EmbedAI.
+</p>
+</div>
+
+<div class="card">
+<h2>⚡ Fast Search</h2>
+<p>
+Google-powered search results with modern UI.
+</p>
+</div>
+
+<div class="card">
+<h2>🌌 Futuristic Design</h2>
+<p>
+Glassmorphism interface with gradients and glow effects.
+</p>
+</div>
+
+<div class="card">
+<h2>📱 Flipabit Ready</h2>
+<p>
+Works inside mobile WebViews and Flipabit apps.
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- SETTINGS PANEL -->
+
+<div class="settings" id="settingsPanel">
+
+<h2>⚙ Settings</h2>
+
+<div class="setting-group">
+<label>Theme</label>
+<button onclick="toggleTheme()">
+Toggle Dark / Light
+</button>
+</div>
+
+<div class="setting-group">
+<label>Animations</label>
+<button onclick="toggleAnimations()">
+Toggle Animations
+</button>
+</div>
+
+<div class="setting-group">
+<label>Version</label>
+<button>
+Soosle Search 3.0 AI Ultimate
+</button>
+</div>
+
+<div class="setting-group">
+<label>AI Status</label>
+
+<div class="status">
+● EmbedAI Connected
+</div>
+
+</div>
+
+<div class="setting-group">
+<label>Close</label>
+<button onclick="toggleSettings()">
+Close Settings
+</button>
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+© 2026 Soosle Search 3.0 AI Ultimate Edition
+</div>
+
+<!-- EMBEDAI CONFIG -->
+
+<script>
+
+window.EMBEDAI_CONFIG = {
+
+name: "Soosle AI",
+
+welcome:
+"Hello! Welcome to Soosle AI.",
+
+accent: "#7c3aed",
+
+background: "#0f172a",
+
+text: "#ffffff",
+
+contrast: "#000000",
+
+position: "right"
+
+};
+
+</script>
+
+<!-- EMBEDAI -->
+
+<script src="https://embedai.dev/embed/v1/chat.js"></script>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function toggleSettings(){
+
+document
+.getElementById("settingsPanel")
+.classList
+.toggle("active");
+
+}
+
+function toggleTheme(){
+
+document.body.classList.toggle("light");
+
+}
+
+let animationsEnabled = true;
+
+function toggleAnimations(){
+
+animationsEnabled = !animationsEnabled;
+
+if(!animationsEnabled){
+
+document.querySelectorAll("*")
+.forEach(el=>{
+
+el.style.transition = "none";
+
+});
+
+alert("Animations Disabled");
+
+}else{
+
+document.querySelectorAll("*")
+.forEach(el=>{
+
+el.style.transition = "";
+
+});
+
+alert("Animations Enabled");
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
